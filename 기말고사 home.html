@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<link type="https://fonts.googleapis.com/css2? family = Nanum + Gothic & display = swap"rel = "스타일 시트">
+<link rel ="stylesheet" href="mystyle.css"/>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(document).ready(function () {
+$(".button").click(function(){
+
+var BId=$(this).attr("id");
+BId = BId.charAt(2);
+
+var valu=$("#"+BId).val();
+var now=$("#b"+BId).text();
+now=Number(now)+Number(valu);
+
+$("#b"+BId).empty();
+$("#b"+BId).append(now)
+});
+
+$("#clear").click(function(){
+for(var i=1;i<5;i++){
+$("#b"+i).empty();
+$("#b"+i).append("0")
+}
+
+});
+});
+
+function allowDrop(e){
+e.preventDefault();
+}
+function handleDragStart(e){
+e.dataTransfer.effectAllowed='move';
+e.dataTransfer.setData("Text", e.target.id);
+}
+
+function handleDrop(e){
+e.preventDefault();
+var src=e.dataTransfer.getData("Text");
+e.target.appendChild(document.getElementById(src));
+}
+</script>
+<style>
+
+</style>
+</head>
+<p id="top">
+<body>
+<table frame=void>
+<th>상품 사진</th>
+<th>상품 설명</th>
+<th>상품 링크</th>
+<th>상품 링크</th>
+<th></th>
+<tr>
+<td><img src="1.png" alt="연필" height="100" draggable="true" id="img1" ondragstart="handleDragStart(event)"></td>
+<td>검정연필</td>
+<td class="link"><a href = "연필.html" taget="_parent"><button class="link">상품 상세</button></a></td>
+<td><input type="number" id="1"></br><button class="button" id="bt1">확인</button></td>
+</tr>
+<td><img src="2.png" alt="연필" height="100" draggable="true" id="img2" ondragstart="handleDragStart(event)"></td>
+<td>빨강연필</td>
+<td class="link"><a href = "연필.html" taget="_parent"><button class="link">상품 상세</button></a></td>
+<td><input type="number" id="2"></br><button class="button" id="bt2">확인</button></td>
+</tr>
+<td><img src="3.png" alt="연필" height="100" draggable="true" id="img3" ondragstart="handleDragStart(event)"></td>
+<td>초록연필</td>
+<td class="link"><a href = "연필.html" taget="_parent"><button class="link">상품 상세</button></a></td>
+<td><input type="number" id="3"></br><button class="button" id="bt3">확인</button></td>
+</tr>
+<td><img src="4.png" alt="연필" height="100" draggable="true" id="img4" ondragstart="handleDragStart(event)"></td>
+<td>하늘색연필</td>
+<td class="link"><a href = "연필.html" taget="_parent"><button class="link">상품 상세</button></a></td>
+<td><input type="number" id="4"></br><button class="button" id="bt4">확인</button></td>
+</tr>
+</body>
+
+<table fame=1px style="position:fixed; float:right;right:10px;top:20px;" bgcolor="#ffffff">
+<th>장바구니</th>
+<tr><td><img src="1.png" alt="연필" height="100"></td></tr>
+<tr><td>검은연필 : <b id="b1">0</b></td></tr>
+<tr><td>빨강연필 : <b id="b2">0</b></td></tr>
+<tr><td>초록연필 : <b id="b3">0</b></td></tr>
+<tr><td>하늘색연필 : <b id="b4">0</b></td></tr>
+<tr><td><button id="clear">초기화</button></td></tr>
+<tr><td bgcolor="Black" style="color:white; text-align: center"><a href="#top" style="color:white;">top</a></td></tr>
+<tr><td><div id="cart" ondrop="handleDrop(event)" ondragover="allowDrop(event)" style="width:100px;height:400px;"></div></td></tr>
+
+
+
+</html>
